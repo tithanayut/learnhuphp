@@ -11,6 +11,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Sarabun:wght@400;700&display=swap"
         rel="stylesheet" />
     @vite('resources/css/app.css')
+    @vite('resources/js/app.js')
 
     @hasSection('title')
         <title>LearnHub - @yield('title')</title>
@@ -50,9 +51,9 @@
     </main>
 
     @if (session('toast'))
-        <script>
-            alert("{{ session('toast') }}")
-        </script>
+        <wc-toast></wc-toast>
+        <div id="toast" data-message="{{ session('toast') }}"></div>
+        @vite('resources/js/toast.js')
     @endif
 </body>
 

@@ -17,6 +17,8 @@ class AuthController extends Controller {
             'password' => Hash::make($request->password)
         ]);
 
+        $request->session()->regenerate();
+
         Auth::login($user);
 
         return redirect()->route('home');
@@ -30,6 +32,8 @@ class AuthController extends Controller {
                 'toast' => 'Username or password is invalid',
             ]);
         }
+
+        $request->session()->regenerate();
 
         Auth::login($user);
 
